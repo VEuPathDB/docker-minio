@@ -43,12 +43,12 @@ services:
       - monitoring-ext
 
     labels:
-    - "traefik.http.routers.${TRAEFIK_MINIO_ROUTER:-minio-dev}.rule=Host(`${TRAEFIK_MINIO_HOST:-minio-dev.local.apidb.org}`)"
+    - "traefik.http.routers.${TRAEFIK_MINIO_ROUTER:-minio-dev}.rule=Host(`${TRAEFIK_MINIO_HOST:-minio-dev.local.apidb.org}`,`${TRAEFIK_MINO_PROXY_HOST:-minio-dev.local.apidb.org}`)"
     - "traefik.http.routers.${TRAEFIK_MINIO_ROUTER:-minio-dev}.service=${TRAEFIK_MINIO_ROUTER:-minio-dev}"
     - "traefik.http.routers.${TRAEFIK_MINIO_ROUTER:-minio-dev}.tls=true"
     - "traefik.http.services.${TRAEFIK_MINIO_ROUTER:-minio-dev}.loadbalancer.server.port=9000"
 
-    - "traefik.http.routers.${TRAEFIK_MINIO_ROUTER:-minio-dev}-admin.rule=Host(`${TRAEFIK_MINO_ADMIN_HOST:-minio-dev-admin.local.apidb.org}`)"
+    - "traefik.http.routers.${TRAEFIK_MINIO_ROUTER:-minio-dev}-admin.rule=Host(`${TRAEFIK_MINO_ADMIN_HOST:-minio-dev-admin.local.apidb.org}`,`${TRAEFIK_MINO_PROXY_ADMIN_HOST:-minio-dev-admin.local.apidb.org}`)"
     - "traefik.http.routers.${TRAEFIK_MINIO_ROUTER:-minio-dev}-admin.service=${TRAEFIK_MINIO_ROUTER:-minio-dev}-admin"
     - "traefik.http.routers.${TRAEFIK_MINIO_ROUTER:-minio-dev}-admin.tls=true"
     - "traefik.http.services.${TRAEFIK_MINIO_ROUTER:-minio-dev}-admin.loadbalancer.server.port=9001"
